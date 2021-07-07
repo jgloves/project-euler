@@ -1,12 +1,15 @@
 import time
 import numpy as np
-#calculates the nth Fibonacci number F_n (assuming F_1 = 1 and F_2 = 2)
+
+
+# calculates the nth Fibonacci number F_n (assuming F_1 = 1 and F_2 = 2) recursively
 def fib(n):
     if n == 1:
         return 1
     if n == 2:
         return 2
     return fib(n - 1) + fib(n - 2)
+
 
 # determines the largest j such that j = 3i - 1 with n as an upper bound for j.
 def get_largest_even_fib_index_component(n):
@@ -25,6 +28,7 @@ def inefficient_solution():
     inefficient_solution_time = time.time() - start_time
     # print("inefficient solution time: " + str(inefficient_solution_time))
     return inefficient_solution_time
+
 
 # an iterative solution - first find largest possible index and then only calculate fib(m) once for each iteration in a for loop
 # noticing that fib(3n-1) are the even Fibonacci numbers.
@@ -50,6 +54,7 @@ def iterative_solution():
     # print("iterative solution time: " + str(iterative_solution_time))
     return iterative_solution_time
 
+
 def possibly_more_efficient_solution():
     start_time = time.time()
     n = 1
@@ -63,6 +68,7 @@ def possibly_more_efficient_solution():
     # print("slightly more efficient solution time: " + str(solution_time))
     return solution_time
 
+
 def possibly_more_efficient_solution_numpy():
     start_time = time.time()
     n = 1
@@ -74,6 +80,7 @@ def possibly_more_efficient_solution_numpy():
     solution_time = time.time() - start_time
     # print("slightly more efficient solution time: " + str(solution_time))
     return solution_time
+
 
 def get_avg_solution_times(reps):
     avg_inefficient_time = sum([inefficient_solution() for i in range(1, reps + 1)]) / reps
@@ -87,9 +94,7 @@ def get_avg_solution_times(reps):
     print(str(avg_iterative_time) + " average iterative solution time with " + str(reps) + " reps.")
 
 
-
 if __name__ == '__main__':
-
-    get_avg_solution_times(12)
+    get_avg_solution_times(100)
 
 
